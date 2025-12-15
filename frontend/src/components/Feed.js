@@ -42,7 +42,7 @@ const Feed = () => {
     loadFeed(1);
 
     // Connect to Socket.io for real-time updates
-    const socket = socketService.connect();
+    socketService.connect();
 
     const handleNewContent = (newItem) => {
       console.log('New content received:', newItem);
@@ -54,6 +54,7 @@ const Feed = () => {
     return () => {
       socketService.off('newContent', handleNewContent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.interests]);
 
   const refreshFeed = () => {
